@@ -10,6 +10,8 @@ router.post('/create', loginController.create)
 
 router.put('/update/:id', loginController.update)
 
+router.delete('/delete/:id', loginController.deleted)
+
 
 
 module.exports = router;
