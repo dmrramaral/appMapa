@@ -23,9 +23,51 @@ const users = [
 ]
 
 
+const create = (req, res) => {
+    const user = req.body
+    users.push(user)
+    res.send(user)
+
+
+}
+
+const update = (req, res) => {
+    const id = req.params.id;
+
+    users.map(function(valor, index){
+        if(valor.id == id){
+            users[index] = req.body;
+            res.send(users[index]);
+        }
+    });
+
+    if(!users){
+        res.send("Usuário não encontrado");
+    }
+       
+      
+}
+
+const deleted = (req,res) => {
+    const id = req.params.id;
+
+    users.map(function(valor, index){
+        if(valor.id == id){
+            users.splice(index, 1);
+            res.send(users);
+        }
+    });
+
+    if(!users){
+        res.send("Usuário não encontrado");
+    }
+}
+
+
+
 
 const findAll = (req, res) => {
-    
+
     res.send(users)
 }
 
@@ -37,11 +79,6 @@ const findById = (req, res) => {
 
 }
 
-const create = (req, res) => {
-    const user = req.body
-    users.push(user)
-    res.send(user)
-}
 
 
 
@@ -50,6 +87,8 @@ module.exports = {
     findById,
     findAll,
     create,
+    update,
+    deleted
 
 };
 

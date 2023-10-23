@@ -8,6 +8,8 @@ router.get('/findById/:id', loginController.findById)
 
 router.post('/create', loginController.create)
 
+router.put('/update/:id', loginController.update)
+
 
 
 module.exports = router;
