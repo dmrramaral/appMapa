@@ -1,5 +1,4 @@
-
-
+// Array de usuários com dados iniciais
 const users = [
     {
         id: 1,
@@ -18,19 +17,17 @@ const users = [
         name: 'Peter',
         email: 'teste3@gmail.com',
         password: '12345678'
-    },
-
+    }
 ]
 
-
+// Função para criar um novo usuário
 const create = (req, res) => {
-    const user = req.body
-    users.push(user)
-    res.send(user)
-
-
+    const user = req.body;
+    users.push(user);
+    res.send(user);
 }
 
+// Função para atualizar um usuário existente
 const update = (req, res) => {
     const id = req.params.id;
 
@@ -44,11 +41,10 @@ const update = (req, res) => {
     if(!users){
         res.send("Usuário não encontrado");
     }
-       
-      
 }
 
-const deleted = (req,res) => {
+// Função para excluir um usuário
+const deleted = (req, res) => {
     const id = req.params.id;
 
     users.map(function(valor, index){
@@ -63,32 +59,23 @@ const deleted = (req,res) => {
     }
 }
 
-
-
-
+// Função para encontrar todos os usuários
 const findAll = (req, res) => {
-
-    res.send(users)
+    res.send(users);
 }
 
+// Função para encontrar um usuário por ID
 const findById = (req, res) => {
-
-    const id = req.params.id
-    const user = users.find(user => user.id == id)
-    res.send(user)
-
+    const id = req.params.id;
+    const user = users.find(user => user.id == id);
+    res.send(user);
 }
 
-
-
-
-
+// Exporta as funções para serem usadas em outro lugar
 module.exports = {
     findById,
     findAll,
     create,
     update,
     deleted
-
 };
-
