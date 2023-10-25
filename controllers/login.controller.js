@@ -1,24 +1,4 @@
-// Array de usuários com dados iniciais
-const users = [
-    {
-        id: 1,
-        name: 'John',
-        email: 'teste1@gmail.com',
-        password: '12345678'
-    },
-    {
-        id: 2,
-        name: 'Mary',
-        email: 'teste2@gmail.com',
-        password: '12345678'
-    },
-    {
-        id: 3,
-        name: 'Peter',
-        email: 'teste3@gmail.com',
-        password: '12345678'
-    }
-]
+const User = require("../models/user.model")
 
 // Função para criar um novo usuário
 const create = (req, res) => {
@@ -61,7 +41,8 @@ const deleted = (req, res) => {
 
 // Função para encontrar todos os usuários
 const findAll = (req, res) => {
-    res.send(users);
+    return res.send(User.find());
+    
 }
 
 // Função para encontrar um usuário por ID
