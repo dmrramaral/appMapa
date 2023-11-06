@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const login = require('./router/login.router');
 const connectToDatabase = require('./database/database');
+require('dotenv').config();
 
 connectToDatabase();
 
