@@ -10,7 +10,7 @@ router.post('/create', loginController.create)
 
 router.put('/update/:id', loginController.update)
 
-router.delete('/delete/:id', loginController.deleted)
+router.delete('/delete/:id', loginController.deleteUser)
 
 
 
