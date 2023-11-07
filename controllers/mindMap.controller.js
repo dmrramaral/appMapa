@@ -21,6 +21,7 @@ const update = async (req, res) => {
     try {
         return res.status(200).send(await MindMap.updateMindMap(id, mindMap, { new: true }));
     } catch (error) {
+        console.log(error);
         return res.status(500).send({ error: 'Erro ao atualizar o mapa mental' });
     }
 }

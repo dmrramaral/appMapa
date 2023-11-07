@@ -9,4 +9,6 @@ router.post('/create', mindMapController.create);
 
 router.put('/update/:id', mindMapController.update);
 
+router.delete('/delete/:id', mindMapController.deleteMindMap);
+
 module.exports = router;

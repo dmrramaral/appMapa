@@ -7,7 +7,12 @@ const createMindMap = (mindMap) => {
 
 // Função para atualizar um mapa mental existente
 const updateMindMap = (id, mindMap) => {
-    return MindMap.findByIdAndUpdate(id, mindMap, { returnDocument: "after" });
+
+    /* Vou alterar para o metodo FindOne para atualizar a data quando for atualizado o objeto
+    parece que o o findBy não executa o pre que estou chamando no model 
+    Não funcionou
+    */
+    return MindMap.findOneAndUpdate({_id :id }, mindMap, { new: true});
 }
 
 // Função para excluir um mapa mental
