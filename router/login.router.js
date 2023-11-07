@@ -1,17 +1,14 @@
 const router = require('express').Router();
-const loginController = require('../controllers/login.controller');
 
 
-router.get('/findAll', loginController.findAll)
+const auth = require('../controllers/auth.controllers');
 
-router.get('/findById/:id', loginController.findById)
 
-router.post('/create', loginController.create)
 
-router.put('/update/:id', loginController.update)
 
-router.delete('/delete/:id', loginController.deleted)
+router.post('/login', auth.login);
 
+router.get('/autorization', auth.autorization);
 
 
 module.exports = router;
