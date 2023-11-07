@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 const login = require('./router/user.router');
+
+const mindMap = require('./router/mindMap.router');
 /* importação do Service de autenticação */
 const authServices = require('./services/auth.services');
 
@@ -15,6 +17,8 @@ const port = 3000;
 app.use(express.json());
 
 app.use('/user', login);
+
+app.use('/mindMap', mindMap);
 
 app.get('/', (req, res) => {
     res.send("Hello World");
