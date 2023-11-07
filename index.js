@@ -3,15 +3,15 @@ const express = require('express');
 
 
 const app = express();
-const login = require('./router/user.router');
+const login = require('./src/router/user.router');
 
-const authUser = require('./router/login.router');
+const authUser = require('./src/router/login.router');
 
-const mindMap = require('./router/mindMap.router');
+const mindMap = require('./src/router/mindMap.router');
 /* importação do Service de autenticação */
 
 
-const connectToDatabase = require('./database/database');
+const connectToDatabase = require('./src/database/database');
 require('dotenv').config();
 
 connectToDatabase();
@@ -30,7 +30,7 @@ app.use('/auth', authUser);
 
 app.get('/', (req, res) => {
     console.log(token());
-    res.send("Hello World");
+    res.send("Bem vindo ao MindMap");
 });
 
 
