@@ -1,13 +1,14 @@
-const MindMap = require('../models/mindMap.model.js');
+const MindMap = require('../services/mindMap.services');
 
 // Função para criar um novo mapa mental
 const create = async (req, res) => {
     const mindMap = req.body;
 
     try {
-        const newMindMap = await MindMap.create(mindMap);
+        const newMindMap = await MindMap.createMindMap(mindMap);
         return res.status(201).send(newMindMap);
     } catch (error) {
+        console.log(error);
         return res.status(500).send({ error: 'Erro ao criar mapa mental' });
     }
 };
@@ -18,7 +19,7 @@ const update = async (req, res) => {
     const mindMap = req.body;
 
     try {
-        return res.status(200).send(await MindMap.findByIdAndUpdate(id, mindMap, { new: true }));
+        return res.status(200).send(await MindMap.updateMindMap(id, mindMap, { new: true }));
     } catch (error) {
         return res.status(500).send({ error: 'Erro ao atualizar o mapa mental' });
     }
@@ -29,7 +30,7 @@ const deleteMindMap = async (req, res) => {
     const id = req.params.id;
 
     try {
-        const deletedMindMap = await MindMap.findByIdAndDelete(id);
+        const deletedMindMap = await MindMap.deleteMindMap(id);
         if (!deletedMindMap) {
             return res.status(404).send({ error: 'Mapa mental não encontrado' });
         }
@@ -41,7 +42,7 @@ const deleteMindMap = async (req, res) => {
 
 const findAll = async (req, res) => {
     try {
-        const mindMaps = await MindMap.find();
+        const mindMaps = await MindMap.findAllMindMap();
         return res.send(mindMaps);
     } catch (error) {
         return res.status(500).send({ error: 'Erro ao buscar os mapas mentais' });
