@@ -1,4 +1,6 @@
 const User = require('../models/user.model');
+const jwt = require('jsonwebtoken');
+
 
 const loginService = (email) => User.findOne({ email });
 
@@ -7,8 +9,11 @@ const updateTokenService = (user) => {
     return User.findByIdAndUpdate(user.id, user, { returnDocument: "after" });
 }
 
+const generateToken = (id, secret) => jwt.sign({ id }, secret, { expiresIn: 600 });
+
 
 module.exports = {
     loginService,
     updateTokenService,
+    generateToken
 }

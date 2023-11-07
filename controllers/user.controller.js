@@ -15,9 +15,10 @@ const create = async (req, res) => {
     }
 
     try {
-        const createdUser = await userService.createdUser(user);
+        const createdUser = await userService.createUser(user);
         return res.status(201).send(createdUser);
     } catch (error) {
+        console.log(error);
         return res.status(500).send({ error: 'Erro ao criar usuário' });
     }
 };
