@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const loginController = require('../controllers/login.controller');
+const loginController = require('../controllers/user.controller');
 
 
 router.get('/findAll', loginController.findAll)

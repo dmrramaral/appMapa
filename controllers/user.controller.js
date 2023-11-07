@@ -1,4 +1,4 @@
-const User = require('../models/user.model');
+const userService = require('../services/login.services');
 const mongoose = require('mongoose');
 
 // Função para criar um novo usuário
@@ -15,7 +15,7 @@ const create = async (req, res) => {
     }
 
     try {
-        const createdUser = await User.create(user);
+        const createdUser = await userService.createdUser(user);
         return res.status(201).send(createdUser);
     } catch (error) {
         return res.status(500).send({ error: 'Erro ao criar usuário' });
@@ -28,7 +28,7 @@ const update = async (req, res) => {
     const user = req.body;
 
     try {
-        const updatedUser = await User.findByIdAndUpdate(id, user, { new: true });
+        const updatedUser = await userService.updatedUser(id, user, { new: true });
         if (!updatedUser) {
             return res.status(404).send({ error: 'Usuário não encontrado' });
         }
@@ -43,7 +43,7 @@ const deleteUser = async (req, res) => {
     const id = req.params.id;
 
     try {
-        const deletedUser = await User.findByIdAndDelete(id);
+        const deletedUser = await userService.deleteUser(id);
         if (!deletedUser) {
             return res.status(404).send({ error: 'Usuário não encontrado' });
         }
@@ -56,7 +56,7 @@ const deleteUser = async (req, res) => {
 // Função para encontrar todos os usuários
 const findAll = async (req, res) => {
     try {
-        const users = await User.find();
+        const users = await userService.findAllUser();
         return res.send(users);
     } catch (error) {
         return res.status(500).send({ error: 'Erro ao buscar os usuários' });
@@ -68,7 +68,7 @@ const findById = async (req, res) => {
     const id = req.params.id;
 
     try {
-        const user = await User.findById(id);
+        const user = await userService.findByIdUser(id);
         if (!user) {
             return res.status(404).send({ error: 'Usuário não encontrado' });
         }
