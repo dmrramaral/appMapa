@@ -1,4 +1,4 @@
-const userService = require('../services/login.services');
+const userService = require('../services/user.services');
 const mongoose = require('mongoose');
 
 // Função para criar um novo usuário
