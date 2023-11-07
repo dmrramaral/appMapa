@@ -1,31 +1,31 @@
 const User = require('../models/user.model');
 
-const findByIdUser = (id) => {
+const findByIdUserService = (id) => {
     return User.findById(id);
 }
 
-const findAllUser = () => {
+const findAllUserService = () => {
     return User.find();
 
 }
 
-const createUser = (user) => {
+const createUserService = (user) => {
     return User.create(user);
 
 }
 
-const updateUser = (id, user) => {
+const updateUserService = (id, user) => {
     return User.findByIdAndUpdate(id, user, { returnDocument: "after" });
 }
 
-const deleteUser = (id) => {
+const deleteUserService = (id) => {
     return User.findByIdAndRemove(id);
 }
 
 module.exports = {
-    findByIdUser,
-    findAllUser,
-    createUser,
-    updateUser,
-    deleteUser
+    findByIdUserService,
+    findAllUserService,
+    createUserService,
+    updateUserService,
+    deleteUserService
 }

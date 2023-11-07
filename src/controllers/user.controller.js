@@ -2,7 +2,7 @@ const userService = require('../services/user.services');
 const mongoose = require('mongoose');
 
 // Função para criar um novo usuário
-const create = async (req, res) => {
+const createController = async (req, res) => {
     /* Inseri o async para poder inserir o await dentro do metodo para esperar ele aguarde até que seja resolvido e retornar o valor do Metodo */
     const user = req.body;
 
@@ -15,7 +15,7 @@ const create = async (req, res) => {
     }
 
     try {
-        const createdUser = await userService.createUser(user);
+        const createdUser = await userService.createUserService(user);
         return res.status(201).send(createdUser);
     } catch (error) {
         console.log(error);
@@ -24,12 +24,12 @@ const create = async (req, res) => {
 };
 
 // Função para atualizar um usuário existente
-const update = async (req, res) => {
+const updateController = async (req, res) => {
     const id = req.params.id;
     const user = req.body;
 
     try {
-        const updatedUser = await userService.updatedUser(id, user, { new: true });
+        const updatedUser = await userService.updatedUserService(id, user, { new: true });
         if (!updatedUser) {
             return res.status(404).send({ error: 'Usuário não encontrado' });
         }
@@ -40,11 +40,11 @@ const update = async (req, res) => {
 };
 
 // Função para excluir um usuário
-const deleteUser = async (req, res) => {
+const deleteUserController = async (req, res) => {
     const id = req.params.id;
 
     try {
-        const deletedUser = await userService.deleteUser(id);
+        const deletedUser = await userService.deleteUserService(id);
         if (!deletedUser) {
             return res.status(404).send({ error: 'Usuário não encontrado' });
         }
@@ -55,9 +55,9 @@ const deleteUser = async (req, res) => {
 };
 
 // Função para encontrar todos os usuários
-const findAll = async (req, res) => {
+const findAllController = async (req, res) => {
     try {
-        const users = await userService.findAllUser();
+        const users = await userService.findAllUserService();
         return res.send(users);
     } catch (error) {
         return res.status(500).send({ error: 'Erro ao buscar os usuários' });
@@ -65,11 +65,11 @@ const findAll = async (req, res) => {
 };
 
 // Função para encontrar um usuário por ID
-const findById = async (req, res) => {
+const findByIdController = async (req, res) => {
     const id = req.params.id;
 
     try {
-        const user = await userService.findByIdUser(id);
+        const user = await userService.findByIdUserService(id);
         if (!user) {
             return res.status(404).send({ error: 'Usuário não encontrado' });
         }
@@ -81,9 +81,9 @@ const findById = async (req, res) => {
 
 // Exporta as funções para serem usadas em outro lugar
 module.exports = {
-    findById,
-    findAll,
-    create,
-    update,
-    deleteUser, 
+    findByIdController,
+    findAllController,
+    createController,
+    updateController,
+    deleteUserController, 
 };

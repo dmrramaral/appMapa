@@ -2,15 +2,15 @@ const router = require('express').Router();
 const loginController = require('../controllers/user.controller');
 
 
-router.get('/findAll', loginController.findAll)
+router.get('/findAll', loginController.findAllController)
 
-router.get('/findById/:id', loginController.findById)
+router.get('/findById/:id', loginController.findByIdController)
 
-router.post('/create', loginController.create)
+router.post('/create', loginController.createController)
 
-router.put('/update/:id', loginController.update)
+router.put('/update/:id', loginController.updateController)
 
-router.delete('/delete/:id', loginController.deleteUser)
+router.delete('/delete/:id', loginController.deleteUserController)
 
 
 
