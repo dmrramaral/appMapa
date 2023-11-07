@@ -1,12 +1,12 @@
 const MindMap = require('../models/mindMap.model');
 
 // Função para criar um novo mapa mental na base de dados
-const createMindMap = (mindMap) => {
+const createMindMapService = (mindMap) => {
     return MindMap.create(mindMap);
 }
 
 // Função para atualizar um mapa mental existente
-const updateMindMap = (id, mindMap) => {
+const updateMindMapService = (id, mindMap) => {
 
     /* Vou alterar para o metodo FindOne para atualizar a data quando for atualizado o objeto
     parece que o o findBy não executa o pre que estou chamando no model 
@@ -16,23 +16,23 @@ const updateMindMap = (id, mindMap) => {
 }
 
 // Função para excluir um mapa mental
-const deleteMindMap = (id) => {
+const deleteMindMapService = (id) => {
     return MindMap.findByIdAndRemove(id);
 }
 
-const findAllMindMap = () => {
+const findAllMindMapService = () => {
     return MindMap.find();
 
 }
 
-const findByIdMindMap = (id) => {
+const findByIdMindMapService = (id) => {
     return MindMap.findById(id);
 }
 
 module.exports = {
-    createMindMap,
-    updateMindMap,
-    deleteMindMap,
-    findAllMindMap,
-    findByIdMindMap
+    createMindMapService,
+    updateMindMapService,
+    deleteMindMapService,
+    findAllMindMapService,
+    findByIdMindMapService
 }

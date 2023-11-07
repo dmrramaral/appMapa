@@ -1,14 +1,14 @@
 const router = require('express').Router();
 const mindMapController = require('../controllers/mindMap.controller');
 
-router.get('/findAll', mindMapController.findAll);
+router.get('/findAll', mindMapController.findAllController);
 
-router.get('/findById/:id', mindMapController.findById);
+router.get('/findById/:id', mindMapController.findByIdController);
 
-router.post('/create', mindMapController.create);
+router.post('/create', mindMapController.createController);
 
-router.put('/update/:id', mindMapController.update);
+router.put('/update/:id', mindMapController.updateController);
 
-router.delete('/delete/:id', mindMapController.deleteMindMap);
+router.delete('/delete/:id', mindMapController.deleteMindMapController);
 
 module.exports = router;
